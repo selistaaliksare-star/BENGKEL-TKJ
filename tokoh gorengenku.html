@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUNCH.ID | Gorengan Naik Kelas</title>
+    <style>
+        /* Variabel Warna Modern & Menggugah Selera */
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --accent-orange: #ff6b00;
+            --accent-gold: #ffb703;
+            --text-light: #f5f5f5;
+            --text-muted: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: rgba(18, 18, 18, 0.95);
+            border-bottom: 1px solid #2c2c2c;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--text-light);
+        }
+
+        .logo span {
+            color: var(--accent-orange);
+        }
+
+        .cart-badge {
+            background-color: var(--accent-orange);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 8%;
+            text-align: center;
+            background: radial-gradient(circle at center, #2a180a 0%, #121212 70%);
+            border-bottom: 1px solid #2c2c2c;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: rgba(255, 107, 0, 0.15);
+            color: var(--accent-gold);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border: 1px solid var(--accent-orange);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: var(--accent-orange);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        .btn-main {
+            background: linear-gradient(45deg, var(--accent-orange), var(--accent-gold));
+            color: #121212;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 800;
+            text-decoration: none;
+            font-size: 1rem;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .btn-main:hover {
+            transform: scale(1.05);
+        }
+
+        /* Menu Section */
+        section {
+            padding: 60px 8%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 35px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid #2c2c2c;
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--accent-orange);
+            transform: translateY(-5px);
+        }
+
+        .card-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #2c2c2c;
+            padding-top: 15px;
+        }
+
+        .price {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+        }
+
+        .btn-add {
+            background-color: var(--accent-orange);
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-add:hover {
+            background-color: #e05e00;
+        }
+
+        /* Checkout / Cart Box */
+        .cart-section {
+            background-color: var(--bg-card);
+            border: 1px solid var(--accent-orange);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cart-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .cart-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #2c2c2c;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .btn-wa {
+            width: 100%;
+            background-color: #25D366;
+            color: #121212;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .btn-wa:hover {
+            background-color: #20bd5a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #2c2c2c;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">CRUNCH<span>.ID</span></div>
+        <a href="#checkout" class="cart-badge" id="nav-cart">🛒 Keranjang (0)</a>
+    </header>
+
+    <div class="hero">
+        <span class="tag">🔥 DIGORENG DADAKAN • MINYAK BARU TIAP HARI</span>
+        <h1>Gorengan Kaki Lima, <br><span>Kualitas Bintang Lima.</span></h1>
+        <p>Renyah tahan lama, tiris tanpa minyak berlebih, dan disajikan dengan cocolan sambal spesial racikan rahasia.</p>
+        <a href="#menu" class="btn-main">Pilih Gorengan Sekarang</a>
+    </div>
+
+    <section id="menu">
+        <h2 class="section-title">Menu Andalan</h2>
+        <p class="section-subtitle">Semua menu digoreng saat pesanan masuk agar tetap hangat dan renyah.</p>
+
+        <div class="menu-grid">
+            <div class="card">
+                <div>
+                    <div class="card-emoji">🥟</div>
+                    <h3 class="card-title">Risol Mayo Smoked Beef</h3>
+                    <p class="card-desc">Kulit renyah berlapis tepung roti premium dengan isian daging asap, telur rebus, dan saus mayones lumer.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="price">Rp 5.000</span>
+                    <button class="btn-add" onclick="tambahKeranjang('Risol Mayo Smoked Beef', 5000)">+ Tambah</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-emoji">🌶️</div>
+                    <h3 class="card-title">Tahu Walik Mercon</h3>
+                    <p class="card-desc">Tahu pong dibalik dengan isian adonan ayam cincang dan cabai rawit merah super pedas.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="price">Rp 3.500</span>
+                    <button class="btn-add" onclick="tambahKeranjang('Tahu Walik Mercon', 3500)">+ Tambah</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-emoji">🍌</div>
+                    <h3 class="card-title">Pisang Madu Karamel</h3>
+                    <p class="card-desc">Pisang raja pilihan berbalut adonan madu asli yang terkaramelisasi renyah di bagian luar.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="price">Rp 4.000</span>
+                    <button class="btn-add" onclick="tambahKeranjang('Pisang Madu Karamel', 4000)">+ Tambah</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-emoji">🥬</div>
+                    <h3 class="card-title">Bakwan Udang Krispi</h3>
+                    <p class="card-desc">Sayuran segar dipadu bumbu rempah dengan topping udang utuh yang gurih di setiap gigitan.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="price">Rp 3.000</span>
+                    <button class="btn-add" onclick="tambahKeranjang('Bakwan Udang Krispi', 3000)">+ Tambah</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="checkout">
+        <div class="cart-section">
+            <h2 class="section-title">🧾 Daftar Pesananmu</h2>
+            <ul class="cart-list" id="daftar-pesanan">
